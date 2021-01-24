@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# ToDo: provide the ability to pass cli options to composer for full flexibility later
+
+if test "$NODE_ENV"; then environment=$NODE_ENV; else environment=prod; fi
+
+if [ "$environment" = "prod" ] || [ "$environment" = "production" ]; then
+  npm install --production
+  npm prune --only=production
+else
+  npm install
+fi
