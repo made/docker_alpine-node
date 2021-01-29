@@ -11,7 +11,8 @@ ENV NODE_ENV=production \
     TZ=Europe/Berlin \
     DOCUMENT_ROOT=/home/node/app \
     NPM_CONFIG_LOGLEVEL=warn \
-    START_SCRIPT=start
+    START_SCRIPT=start \
+    PATH=/home/node/scripts:${PATH}
 
 # Install packages - only timezone data in this case
 RUN apk --no-cache add \
@@ -19,8 +20,7 @@ RUN apk --no-cache add \
 
 # Add scripts to the image - also add it to the PATH.
 COPY ./scripts /home/node/scripts
-RUN chmod -R a+x /home/node/scripts \
-    && echo "PATH=/home/node/scripts:${PATH}" >> /etc/environment
+RUN chmod -R a+x /home/node/scripts
 
 # Prepare the app directory and its rights
 RUN mkdir ${DOCUMENT_ROOT} && chown -R node:node ${DOCUMENT_ROOT}
