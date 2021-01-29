@@ -9,7 +9,7 @@ ARG TZDATA_VERSION='2020f-r0'
 ENV NODE_ENV=production \
     TZ=Europe/Berlin \
     DOCUMENT_ROOT=/home/node/app \
-    NPM_CONFIG_LOGLEVEL=debug \
+    NPM_CONFIG_LOGLEVEL=warn \
     START_SCRIPT=start
 
 # Install packages - only timezone data in this case
