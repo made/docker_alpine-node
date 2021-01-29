@@ -2,6 +2,8 @@ FROM node:15.6.0-alpine3.12
 
 LABEL maintainer="Made Team <contact@made.dev>"
 
+ARG TZDATA_VERSION='2020f-r0'
+
 # Default environment of the container
 # Can be overriden by passing environment variables during runtime.
 ENV NODE_ENV=production \
@@ -11,7 +13,8 @@ ENV NODE_ENV=production \
     START_SCRIPT=start
 
 # Install packages - only timezone data in this case
-RUN apk add --no-cache tzdata
+RUN apk --no-cache add \
+    tzdata=${TZDATA_VERSION}
 
 # Add scripts to the image - also add it to the PATH.
 COPY ./scripts /home/node/scripts
