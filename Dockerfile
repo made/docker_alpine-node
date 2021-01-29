@@ -1,6 +1,7 @@
 FROM node:15.6.0-alpine3.12
 
 LABEL maintainer="Made Team <contact@made.dev>"
+LABEL org.opencontainers.image.source="https://github.com/made/docker_alpine-node"
 
 ARG TZDATA_VERSION='2020f-r0'
 
